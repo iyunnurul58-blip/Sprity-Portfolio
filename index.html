@@ -109,7 +109,7 @@
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--text-bright);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.4rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -123,6 +123,13 @@
             border-radius: 4px;
         }
 
+        .page-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.8rem;
+            margin-left: 0.8rem;
+        }
+
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -132,7 +139,7 @@
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
         .card {
@@ -209,6 +216,75 @@
             max-height: 70vh;
             object-fit: contain;
             border-radius: 8px;
+        }
+
+        /* Success Framework Custom Card Styling */
+        .goal-framework-card {
+            border-radius: 18px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+        }
+
+        .goal-badge {
+            align-self: flex-start;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .goal-badge-terracotta {
+            background: #bb6765;
+            color: #ffffff;
+        }
+
+        .goal-badge-sage {
+            background: #7e8c69;
+            color: #ffffff;
+        }
+
+        .goal-card-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--text-bright);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .metric-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .metric-value-terracotta { color: var(--primary-terracotta); }
+        .metric-value-sage { color: var(--primary-sage); }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         /* Highlight Pills & Links */
@@ -407,41 +483,54 @@
             </div>
         </section>
 
-        <!-- PAGE 3: GOALS & CORE VALUES -->
+        <!-- PAGE 3: GOALS (SUCCESS FRAMEWORK) -->
         <section class="slide-page">
-            <div class="page-title">Project Objectives & Strategic Core Values</div>
+            <div class="page-title">Goals that connect experience, commerce, and trust</div>
+            <p class="page-subtitle">Each objective has a measurable signal for the MVP and its early operations.</p>
             
-            <!-- Key Metric Targets (OKRs) -->
-            <div class="grid-3" style="margin-bottom: 1.25rem;">
-                <div class="card" style="text-align: center;">
-                    <h3 style="color: var(--primary-terracotta); font-size: 2.2rem; font-weight: 800;">172,600</h3>
-                    <p>Target Garments Collected in the first 2 Years</p>
+            <div class="grid-3">
+                <!-- 01 DONATION -->
+                <div class="goal-framework-card" style="background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.25);">
+                    <div class="goal-badge goal-badge-terracotta">01 Donation</div>
+                    <div class="goal-card-title">Make donating frictionless</div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-value metric-value-terracotta">≥15%</span>
+                        <span class="metric-label">form conversion</span>
+                    </div>
+                    <div class="metric-row" style="margin-top: 0.5rem;">
+                        <span class="metric-value metric-value-terracotta">≤48 hrs</span>
+                        <span class="metric-label">pickup / drop-off confirmation</span>
+                    </div>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <h3 style="color: var(--primary-sage); font-size: 2.2rem; font-weight: 800;">84%</h3>
-                    <p>Target Sell-Through Rate (144,976 Garments Sold)</p>
-                </div>
-                <div class="card" style="text-align: center;">
-                    <h3 style="color: var(--primary-terracotta); font-size: 2.2rem; font-weight: 800;">100%</h3>
-                    <p>Public Impact Audit Log Transparency</p>
-                </div>
-            </div>
 
-            <!-- 3 Core Values Pillar -->
-            <div class="card">
-                <h3>🎯 Strategic Solution Values (The 3 Pillars)</h3>
-                <div class="grid-3" style="margin-top: 1rem;">
-                    <div style="background: var(--primary-terracotta-soft); padding: 1rem; border-radius: 12px; border: 1px solid rgba(187, 103, 101, 0.2);">
-                        <h4 style="color: var(--primary-terracotta); font-size: 1rem; margin-bottom: 0.4rem;">1. Seamless Donation</h4>
-                        <p style="font-size: 0.88rem; line-height: 1.6;">Zero-friction doorstep pickup or HQ drop-off booking in Jakarta, removing all sorting, packing, and logistical hassle for donors.</p>
+                <!-- 02 COMMERCE -->
+                <div class="goal-framework-card" style="background: var(--primary-sage-soft); border-color: rgba(126, 140, 105, 0.25);">
+                    <div class="goal-badge goal-badge-sage">02 Commerce</div>
+                    <div class="goal-card-title">Grow preloved adoption</div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-value metric-value-sage">84%</span>
+                        <span class="metric-label">sell-through rate</span>
                     </div>
-                    <div style="background: var(--primary-sage-soft); padding: 1rem; border-radius: 12px; border: 1px solid rgba(126, 140, 105, 0.2);">
-                        <h4 style="color: var(--primary-sage); font-size: 1rem; margin-bottom: 0.4rem;">2. Verified Product</h4>
-                        <p style="font-size: 0.88rem; line-height: 1.6;">Every single garment is sanitized, quality-graded, precisely measured, and honestly catalogued to eliminate buyer hesitation.</p>
+                    <div class="metric-row">
+                        <span class="metric-value metric-value-sage" style="font-size: 1.5rem;">IDR 50K</span>
+                        <span class="metric-label">average selling price</span>
                     </div>
-                    <div style="background: var(--primary-terracotta-soft); padding: 1rem; border-radius: 12px; border: 1px solid rgba(187, 103, 101, 0.2);">
-                        <h4 style="color: var(--primary-terracotta); font-size: 1rem; margin-bottom: 0.4rem;">3. Social Impact Transparency</h4>
-                        <p style="font-size: 0.88rem; line-height: 1.6;">Full financial accountability through monthly public audit logs, transaction IDs, and verified charity disbursement receipts.</p>
+                    <div class="metric-row">
+                        <span class="metric-value metric-value-sage">4× / year</span>
+                        <span class="metric-label">buyer repurchase</span>
+                    </div>
+                </div>
+
+                <!-- 03 IMPACT -->
+                <div class="goal-framework-card" style="background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.25);">
+                    <div class="goal-badge goal-badge-terracotta">03 Impact</div>
+                    <div class="goal-card-title">Make social impact visible</div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-value metric-value-terracotta">≤3 days</span>
+                        <span class="metric-label">publish proof after month-end</span>
                     </div>
                 </div>
             </div>
