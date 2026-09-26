@@ -199,7 +199,9 @@
         }
 
         .photo-gallery img {
-            height: 320px;
+            max-height: 420px;
+            width: auto;
+            max-width: 100%;
             border-radius: 12px;
             object-fit: contain;
             border: 1px solid var(--card-border);
@@ -330,12 +332,11 @@
             background: var(--primary-terracotta-soft);
             color: var(--primary-terracotta);
             border: 1px solid var(--card-border);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             font-size: 0.85rem;
             font-weight: 700;
             text-decoration: none;
-            margin-bottom: 0.75rem;
             transition: all 0.2s ease;
         }
 
@@ -357,7 +358,7 @@
             <li><a onclick="goToSlide(1)" class="nav-item">Problem</a></li>
             <li><a onclick="goToSlide(2)" class="nav-item">Goals</a></li>
             <li><a onclick="goToSlide(3)" class="nav-item">Schedule</a></li>
-            <li><a onclick="goToSlide(4)" class="nav-item">Prototypes</a></li>
+            <li><a onclick="goToSlide(4)" class="nav-item">User Journey & MVP</a></li>
             <li><a onclick="goToSlide(5)" class="nav-item">Outcome</a></li>
             <li><a onclick="goToSlide(6)" class="nav-item">Profile & Docs</a></li>
         </ul>
@@ -385,11 +386,11 @@
                 </p>
                 <div style="display: flex; justify-content: center; gap: 2rem; color: var(--text-bright); font-weight: 600; margin-bottom: 2rem;">
                     <div>📅 Duration: <span style="color: var(--primary-terracotta);">Sep 2026 – Dec 2026</span></div>
-                    <div>🎯 Role: <span style="color: var(--primary-sage);">Project Manager</span></div>
+                    <div>🎯 Role: <span style="color: var(--primary-sage);">Product Manager</span></div>
                 </div>
 
                 <!-- Project-Related Core Skills -->
-                <h4 style="color: var(--text-bright); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem;">Core Project Management Competencies</h4>
+                <h4 style="color: var(--text-bright); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem;">Core Product Management Competencies</h4>
                 <div class="skills-grid">
                     <span class="skill-pill">Agile Delivery & Sprint Management</span>
                     <span class="skill-pill">BRD / FSD / PRD Documentation</span>
@@ -432,7 +433,7 @@
             <div class="grid-3" style="margin-bottom: 1.5rem;">
                 <div class="card" style="text-align: center;">
                     <h3 style="color: var(--primary-terracotta); font-size: 2.2rem; font-weight: 800;">172,600</h3>
-                    <p>Target Garments Collected in the first 2 Years </p>
+                    <p>Target Garments Collected in the first 2 Years</p>
                 </div>
                 <div class="card" style="text-align: center;">
                     <h3 style="color: var(--primary-sage); font-size: 2.2rem; font-weight: 800;">84%</h3>
@@ -457,43 +458,32 @@
         <section class="slide-page">
             <div class="page-title">Process: Delivery Plan & Timeline</div>
             <div class="schedule-img-container">
-                <img src="gantt-chart.png" alt="Sprity Gantt Chart" onerror="this.onerror=null; this.src='Screenshot 2026-08-18 174748.png';">
+                <img src="Gantt Chart Picture Sprity.png" alt="Sprity Gantt Chart" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\"text-align:center; color:var(--text-muted); font-weight:600;\">📊 File <b>Gantt Chart Picture Sprity.png</b> siap ditayangkan.</div>';">
             </div>
         </section>
 
-        <!-- PAGE 5: PROCESS - UI PROTOTYPES -->
+        <!-- PAGE 5: PROCESS - USER JOURNEY & MVP -->
         <section class="slide-page">
-            <div class="page-title">Process: UI Prototypes & User Journey</div>
+            <div class="page-title">User Journey & MVP</div>
 
-            <!-- Donation Flow (Top) -->
-            <div class="card" style="margin-bottom: 1.5rem;">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                    <h3>🌱 Donor Flow: Seamless Doorstep Pickup & Handover</h3>
-                    <a href="https://drive.google.com/file/d/1JRqzt33uPITyDgAAwg1etQJ-bIiAvIwP/view?usp=sharing" target="_blank" class="proto-link-btn">
-                        🔗 View Research & MVP Prototype
+            <!-- Live Interactive MVP Web Link -->
+            <div class="card" style="margin-bottom: 1.5rem; background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.3);">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h3 style="color: var(--primary-terracotta); margin-bottom: 0.2rem;">🌐 Interactive Sprity MVP Platform</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-main);">Explore the fully functional web experience for donors, shoppers, and transparent impact audits.</p>
+                    </div>
+                    <a href="https://iyunnurul58-blip.github.io/sprity/" target="_blank" class="proto-link-btn" style="background: var(--primary-terracotta); color: #ffffff;">
+                        🚀 Launch Live MVP Website
                     </a>
-                </div>
-                <div class="photo-gallery">
-                    <img src="p1.png" alt="Donor Step 1" onerror="this.style.display='none'">
-                    <img src="p2.png" alt="Donor Step 2" onerror="this.style.display='none'">
-                    <img src="p3.png" alt="Donor Step 3" onerror="this.style.display='none'">
-                    <img src="p4.png" alt="Donor Step 4" onerror="this.style.display='none'">
                 </div>
             </div>
 
-            <!-- Buyer & Audit Flow (Bottom) -->
+            <!-- User Journey Diagram -->
             <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                    <h3>🛒 Buyer & Audit Flow: Curated Thrift & Public Proof</h3>
-                    <a href="https://drive.google.com/file/d/1MDApR4myrU2boyR1BsOWCwqHDuPGSJRa/view?usp=drive_link" target="_blank" class="proto-link-btn">
-                        🔗 View Full Interactive PRD & Flow
-                    </a>
-                </div>
-                <div class="photo-gallery">
-                    <img src="p5.png" alt="Buyer Step 1" onerror="this.style.display='none'">
-                    <img src="p6.png" alt="Buyer Step 2" onerror="this.style.display='none'">
-                    <img src="p7.png" alt="Buyer Step 3" onerror="this.style.display='none'">
-                    <img src="p8.png" alt="Buyer Step 4" onerror="this.style.display='none'">
+                <h3>🗺️ End-to-End User Journey Map</h3>
+                <div class="photo-gallery" style="justify-content: center; padding-top: 1rem;">
+                    <img src="User Journey.png" alt="Sprity User Journey Map" onerror="this.onerror=null; this.style.display='none'; this.parentNode.innerHTML+='<p style=\"color:var(--text-muted); padding:2rem;\">🖼️ Menampilkan gambar <b>User Journey.png</b> dari repository.</p>';">
                 </div>
             </div>
         </section>
@@ -528,10 +518,10 @@
             <div style="max-width: 850px; margin: 0 auto; text-align: center;">
                 <div class="card" style="padding: 2.5rem;">
                     <h2 style="color: var(--text-bright); font-size: 2.2rem; margin-bottom: 0.3rem;">Nurul Nadjmie</h2>
-                    <p style="color: var(--primary-terracotta); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem;">Project Manager</p>
+                    <p style="color: var(--primary-terracotta); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem;">Product Manager</p>
                     
                     <p style="line-height: 1.8; margin-bottom: 2rem; color: var(--text-main); font-size: 1.05rem;">
-                        Results-oriented Project Manager who thrives at the intersection of commercial strategy, complex technical architecture, and user-centric design. Experienced in leading cross-functional teams from discovery to deployment—driving operational efficiency, automated system integration, and measurable social impact.
+                        Results-oriented Product Manager who thrives at the intersection of commercial strategy, complex technical architecture, and user-centric design. Experienced in leading cross-functional teams from discovery to deployment—driving operational efficiency, automated system integration, and measurable social impact.
                     </p>
 
                     <!-- Complete Sprity Project Documentation Links (Exact 8 Docs) -->
