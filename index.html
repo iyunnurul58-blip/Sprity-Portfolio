@@ -56,13 +56,10 @@
         }
 
         .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary-terracotta);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .nav-menu {
@@ -91,19 +88,20 @@
         .slider-wrapper {
             display: flex;
             width: 700vw; /* 7 Pages */
-            height: 100vh;
+            height: calc(100vh - 70px);
+            margin-top: 70px;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            padding-top: 70px;
         }
 
         .slide-page {
             width: 100vw;
-            height: calc(100vh - 70px);
+            height: 100%;
             padding: 2.5rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             overflow-y: auto;
+            flex-shrink: 0;
         }
 
         /* Layout Grid & Cards */
@@ -189,32 +187,11 @@
             pointer-events: none;
         }
 
-        /* Photo Mockup Gallery */
-        .photo-gallery {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding: 0.75rem 0;
-            scroll-behavior: smooth;
-        }
-
-        .photo-gallery img {
-            max-height: 420px;
-            width: auto;
-            max-width: 100%;
-            border-radius: 12px;
-            object-fit: contain;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            background: #ffffff;
-        }
-
-        /* Schedule Container */
+        /* Schedule & Image Containers */
         .schedule-img-container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            aspect-ratio: 1693 / 929;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -228,7 +205,8 @@
 
         .schedule-img-container img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 70vh;
             object-fit: contain;
             border-radius: 8px;
         }
@@ -328,38 +306,70 @@
         .proto-link-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            background: var(--primary-terracotta-soft);
-            color: var(--primary-terracotta);
-            border: 1px solid var(--card-border);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
+            gap: 0.5rem;
+            background: var(--primary-terracotta);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .proto-link-btn:hover {
-            background: var(--primary-terracotta);
-            color: #ffffff;
+            background: #a35654;
+            box-shadow: 0 0 20px var(--primary-terracotta-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Mockup Grid Styles */
+        .mvp-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .mvp-preview-card {
+            background: var(--bg-color);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mvp-preview-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        }
+
+        .mvp-preview-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--card-border);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation (7 Pages) -->
     <header>
         <div class="brand-logo">
-            <span>🌱 SPRITY</span>
+            <span>SPRITY</span>
         </div>
         <ul class="nav-menu">
             <li><a onclick="goToSlide(0)" class="nav-item active">Cover</a></li>
             <li><a onclick="goToSlide(1)" class="nav-item">Problem</a></li>
             <li><a onclick="goToSlide(2)" class="nav-item">Goals</a></li>
-            <li><a onclick="goToSlide(3)" class="nav-item">Schedule</a></li>
-            <li><a onclick="goToSlide(4)" class="nav-item">User Journey & MVP</a></li>
-            <li><a onclick="goToSlide(5)" class="nav-item">Outcome</a></li>
+            <li><a onclick="goToSlide(3)" class="nav-item">User Journey</a></li>
+            <li><a onclick="goToSlide(4)" class="nav-item">Outcome</a></li>
+            <li><a onclick="goToSlide(5)" class="nav-item">Schedule</a></li>
             <li><a onclick="goToSlide(6)" class="nav-item">Profile & Docs</a></li>
         </ul>
     </header>
@@ -427,10 +437,12 @@
             </div>
         </section>
 
-        <!-- PAGE 3: GOALS -->
+        <!-- PAGE 3: GOALS & CORE VALUES -->
         <section class="slide-page">
-            <div class="page-title">Project Objectives & Targets (OKRs)</div>
-            <div class="grid-3" style="margin-bottom: 1.5rem;">
+            <div class="page-title">Project Objectives & Strategic Core Values</div>
+            
+            <!-- Key Metric Targets (OKRs) -->
+            <div class="grid-3" style="margin-bottom: 1.25rem;">
                 <div class="card" style="text-align: center;">
                     <h3 style="color: var(--primary-terracotta); font-size: 2.2rem; font-weight: 800;">172,600</h3>
                     <p>Target Garments Collected in the first 2 Years</p>
@@ -444,53 +456,71 @@
                     <p>Public Impact Audit Log Transparency</p>
                 </div>
             </div>
+
+            <!-- 3 Core Values Pillar -->
             <div class="card">
-                <h3>🎯 Strategic Solution Goals</h3>
-                <ul style="padding-left: 1.2rem; line-height: 1.8;">
-                    <li><strong>Seamless Inbound:</strong> Provide doorstep pickup and HQ drop-off confirmed in ≤48 hours.</li>
-                    <li><strong>The Trust Stack:</strong> Ensure every item is sanitized, quality-graded, and precisely measured before listing.</li>
-                    <li><strong>Transparent Social Loop:</strong> Channel profits to verified partner charities with monthly public disbursement proofs published within 3 days after month-end.</li>
-                </ul>
+                <h3>🎯 Strategic Solution Values (The 3 Pillars)</h3>
+                <div class="grid-3" style="margin-top: 1rem;">
+                    <div style="background: var(--primary-terracotta-soft); padding: 1rem; border-radius: 12px; border: 1px solid rgba(187, 103, 101, 0.2);">
+                        <h4 style="color: var(--primary-terracotta); font-size: 1rem; margin-bottom: 0.4rem;">1. Seamless Donation</h4>
+                        <p style="font-size: 0.88rem; line-height: 1.6;">Zero-friction doorstep pickup or HQ drop-off booking in Jakarta, removing all sorting, packing, and logistical hassle for donors.</p>
+                    </div>
+                    <div style="background: var(--primary-sage-soft); padding: 1rem; border-radius: 12px; border: 1px solid rgba(126, 140, 105, 0.2);">
+                        <h4 style="color: var(--primary-sage); font-size: 1rem; margin-bottom: 0.4rem;">2. Verified Product</h4>
+                        <p style="font-size: 0.88rem; line-height: 1.6;">Every single garment is sanitized, quality-graded, precisely measured, and honestly catalogued to eliminate buyer hesitation.</p>
+                    </div>
+                    <div style="background: var(--primary-terracotta-soft); padding: 1rem; border-radius: 12px; border: 1px solid rgba(187, 103, 101, 0.2);">
+                        <h4 style="color: var(--primary-terracotta); font-size: 1rem; margin-bottom: 0.4rem;">3. Social Impact Transparency</h4>
+                        <p style="font-size: 0.88rem; line-height: 1.6;">Full financial accountability through monthly public audit logs, transaction IDs, and verified charity disbursement receipts.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- PAGE 4: PROCESS - SCHEDULE ONLY -->
+        <!-- PAGE 4: USER JOURNEY MAP -->
         <section class="slide-page">
-            <div class="page-title">Process: Delivery Plan & Timeline</div>
-            <div class="schedule-img-container">
-                <img src="Gantt Chart Picture Sprity.png" alt="Sprity Gantt Chart" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\"text-align:center; color:var(--text-muted); font-weight:600;\">📊 File <b>Gantt Chart Picture Sprity.png</b> siap ditayangkan.</div>';">
+            <div class="page-title">Process: User Journey Map</div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <img src="User Journey.png" alt="Sprity User Journey Map" style="max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--card-border);">
             </div>
         </section>
 
-        <!-- PAGE 5: PROCESS - USER JOURNEY & MVP -->
+        <!-- PAGE 5: OUTCOME & LIVE MVP LINK + MOCKUP PREVIEW -->
         <section class="slide-page">
-            <div class="page-title">User Journey & MVP</div>
+            <div class="page-title">Solution Outcomes & Live MVP Experience</div>
 
-            <!-- Live Interactive MVP Web Link -->
-            <div class="card" style="margin-bottom: 1.5rem; background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.3);">
+            <!-- Direct Live MVP Callout Card -->
+            <div class="card" style="background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.3); margin-bottom: 1.25rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                     <div>
-                        <h3 style="color: var(--primary-terracotta); margin-bottom: 0.2rem;">🌐 Interactive Sprity MVP Platform</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-main);">Explore the fully functional web experience for donors, shoppers, and transparent impact audits.</p>
+                        <h3 style="color: var(--primary-terracotta); margin-bottom: 0.3rem; font-size: 1.25rem;">🌐 Live Sprity MVP Platform</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-main);">Experience the deployed web prototype for donation booking, thrift shopping, and social impact audit verification.</p>
                     </div>
-                    <a href="https://iyunnurul58-blip.github.io/sprity/" target="_blank" class="proto-link-btn" style="background: var(--primary-terracotta); color: #ffffff;">
-                        🚀 Launch Live MVP Website
+                    <a href="https://iyunnurul58-blip.github.io/sprity/" target="_blank" class="proto-link-btn">
+                        🚀 Launch Live Web MVP
                     </a>
                 </div>
-            </div>
 
-            <!-- User Journey Diagram -->
-            <div class="card">
-                <h3>🗺️ End-to-End User Journey Map</h3>
-                <div class="photo-gallery" style="justify-content: center; padding-top: 1rem;">
-                    <img src="User Journey.png" alt="Sprity User Journey Map" onerror="this.onerror=null; this.style.display='none'; this.parentNode.innerHTML+='<p style=\"color:var(--text-muted); padding:2rem;\">🖼️ Menampilkan gambar <b>User Journey.png</b> dari repository.</p>';">
+                <!-- MVP Visual Mockup Features Grid -->
+                <div class="mvp-preview-grid">
+                    <div class="mvp-preview-card">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="Curated Catalogue">
+                        <h4 style="font-size: 0.95rem; color: var(--text-bright);">1. Curated Catalogue</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Sanitized & graded preloved pieces with precise measurements.</p>
+                    </div>
+                    <div class="mvp-preview-card">
+                        <img src="https://images.unsplash.com/photo-1556742049-0a670f4a4591?auto=format&fit=crop&w=600&q=80" alt="Seamless Pickup Booking">
+                        <h4 style="font-size: 0.95rem; color: var(--text-bright);">2. Doorstep Pickup Booking</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Simple form submission for hassle-free clothing donation.</p>
+                    </div>
+                    <div class="mvp-preview-card">
+                        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Public Impact Audit Hub">
+                        <h4 style="font-size: 0.95rem; color: var(--text-bright);">3. Transparent Impact Hub</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Publicly accessible audit log containing disbursement proofs.</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- PAGE 6: OUTCOME -->
-        <section class="slide-page">
-            <div class="page-title">Solution & Project Outcomes</div>
             <div class="grid-2">
                 <div class="card">
                     <h3>💡 Implemented Managed Solutions</h3>
@@ -510,6 +540,14 @@
                         <li><strong>Garment Quality Assurance:</strong> Low-grade pieces routed directly to textile recycling partners.</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <!-- PAGE 6: SCHEDULE -->
+        <section class="slide-page">
+            <div class="page-title">Process: Delivery Plan & Timeline</div>
+            <div class="schedule-img-container">
+                <img src="Gantt Chart Picture Sprity.png" alt="Sprity Gantt Chart">
             </div>
         </section>
 
@@ -546,7 +584,7 @@
 
     </div>
 
-    <!-- Interactive Navigation Script -->
+    <!-- Interactive Navigation Script (7 Total Slides) -->
     <script>
         let currentSlide = 0;
         const totalSlides = 7;
