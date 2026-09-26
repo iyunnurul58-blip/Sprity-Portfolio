@@ -187,7 +187,7 @@
             pointer-events: none;
         }
 
-        /* Schedule & Image Containers */
+        /* Image Containers */
         .schedule-img-container {
             width: 100%;
             max-width: 1200px;
@@ -209,6 +209,25 @@
             max-height: 70vh;
             object-fit: contain;
             border-radius: 8px;
+        }
+
+        /* Hero Image Container for Cover Page */
+        .cover-hero-img {
+            width: 100%;
+            max-width: 750px;
+            height: 220px;
+            margin: 1.25rem auto 1.5rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 25px -10px rgba(187, 103, 101, 0.12);
+            background: var(--primary-sage-soft);
+        }
+
+        .cover-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Highlight Pills & Links */
@@ -252,7 +271,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.75rem;
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
         }
 
         .skill-pill {
@@ -323,37 +342,6 @@
             box-shadow: 0 0 20px var(--primary-terracotta-glow);
             transform: translateY(-2px);
         }
-
-        /* Mockup Grid Styles */
-        .mvp-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .mvp-preview-card {
-            background: var(--bg-color);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .mvp-preview-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
-        }
-
-        .mvp-preview-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-            border: 1px solid var(--card-border);
-        }
     </style>
 </head>
 <body>
@@ -381,26 +369,31 @@
     <!-- Slider Wrapper -->
     <div class="slider-wrapper" id="slider">
 
-        <!-- PAGE 1: COVER -->
+        <!-- PAGE 1: COVER WITH HERO IMAGE -->
         <section class="slide-page" style="justify-content: center;">
             <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-                <div style="margin-bottom: 1rem;">
+                <div>
                     <span class="badge badge-sage" style="font-size: 0.9rem; padding: 0.5rem 1.2rem;">Digital Opportunity Shop</span>
                 </div>
 
-                <h1 style="font-size: 3.2rem; color: var(--text-bright); margin: 1.2rem 0 1rem 0; font-weight: 800; line-height: 1.2;">
+                <h1 style="font-size: 3rem; color: var(--text-bright); margin: 1rem 0 0.8rem 0; font-weight: 800; line-height: 1.2;">
                     Sprity: Declutter with Purpose, Shop as Opportunity
                 </h1>
-                <p style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 2rem;">
+
+                <!-- Hero Image Visual in Cover -->
+                <div class="cover-hero-img">
+                    <img src="cover-image.png" alt="Sprity Preloved Collection" onerror="this.onerror=null; this.src='User Journey.png';">
+                </div>
+
+                <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.6;">
                     Sprity is a digital opportunity shop, a platform that turns donated preloved goods into social impact. We collect unused clothing, sanitize and verify every piece, and resell it through a curated catalogue to transparently fund partner charities.
                 </p>
-                <div style="display: flex; justify-content: center; gap: 2rem; color: var(--text-bright); font-weight: 600; margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: center; gap: 2rem; color: var(--text-bright); font-weight: 600; margin-bottom: 1.25rem;">
                     <div>📅 Duration: <span style="color: var(--primary-terracotta);">Sep 2026 – Dec 2026</span></div>
                     <div>🎯 Role: <span style="color: var(--primary-sage);">Product Manager</span></div>
                 </div>
 
                 <!-- Project-Related Core Skills -->
-                <h4 style="color: var(--text-bright); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem;">Core Product Management Competencies</h4>
                 <div class="skills-grid">
                     <span class="skill-pill">Agile Delivery & Sprint Management</span>
                     <span class="skill-pill">BRD / FSD / PRD Documentation</span>
@@ -485,12 +478,12 @@
             </div>
         </section>
 
-        <!-- PAGE 5: OUTCOME & LIVE MVP LINK + MOCKUP PREVIEW -->
+        <!-- PAGE 5: OUTCOME & LIVE MVP LINK -->
         <section class="slide-page">
-            <div class="page-title">Solution Outcomes & Live MVP Experience</div>
+            <div class="page-title">Solution Outcomes & Live MVP Platform</div>
 
             <!-- Direct Live MVP Callout Card -->
-            <div class="card" style="background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.3); margin-bottom: 1.25rem;">
+            <div class="card" style="background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.3); margin-bottom: 1.5rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                     <div>
                         <h3 style="color: var(--primary-terracotta); margin-bottom: 0.3rem; font-size: 1.25rem;">🌐 Live Sprity MVP Platform</h3>
@@ -499,25 +492,6 @@
                     <a href="https://iyunnurul58-blip.github.io/sprity/" target="_blank" class="proto-link-btn">
                         🚀 Launch Live Web MVP
                     </a>
-                </div>
-
-                <!-- MVP Visual Mockup Features Grid -->
-                <div class="mvp-preview-grid">
-                    <div class="mvp-preview-card">
-                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="Curated Catalogue">
-                        <h4 style="font-size: 0.95rem; color: var(--text-bright);">1. Curated Catalogue</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Sanitized & graded preloved pieces with precise measurements.</p>
-                    </div>
-                    <div class="mvp-preview-card">
-                        <img src="https://images.unsplash.com/photo-1556742049-0a670f4a4591?auto=format&fit=crop&w=600&q=80" alt="Seamless Pickup Booking">
-                        <h4 style="font-size: 0.95rem; color: var(--text-bright);">2. Doorstep Pickup Booking</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Simple form submission for hassle-free clothing donation.</p>
-                    </div>
-                    <div class="mvp-preview-card">
-                        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Public Impact Audit Hub">
-                        <h4 style="font-size: 0.95rem; color: var(--text-bright);">3. Transparent Impact Hub</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Publicly accessible audit log containing disbursement proofs.</p>
-                    </div>
                 </div>
             </div>
 
