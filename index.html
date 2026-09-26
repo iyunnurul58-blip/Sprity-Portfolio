@@ -96,7 +96,7 @@
         .slide-page {
             width: 100vw;
             height: 100%;
-            padding: 2.5rem 4rem;
+            padding: 2rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -106,10 +106,10 @@
 
         /* Layout Grid & Cards */
         .page-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--text-bright);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.2rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -118,15 +118,15 @@
         .page-title::before {
             content: '';
             width: 5px;
-            height: 2.2rem;
+            height: 2rem;
             background: var(--primary-terracotta);
             border-radius: 4px;
         }
 
         .page-subtitle {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.25rem;
             margin-left: 0.8rem;
         }
 
@@ -139,7 +139,7 @@
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         .card {
@@ -220,26 +220,26 @@
 
         /* Success Framework Custom Card Styling */
         .goal-framework-card {
-            border-radius: 18px;
-            padding: 1.8rem;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             position: relative;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.03);
             border: 1px solid var(--card-border);
             background: var(--card-bg);
         }
 
         .goal-badge {
             align-self: flex-start;
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 6px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.8rem;
         }
 
         .goal-badge-terracotta {
@@ -253,18 +253,18 @@
         }
 
         .goal-card-title {
-            font-size: 1.7rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--text-bright);
             line-height: 1.2;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
         }
 
         .metric-row {
             display: flex;
             align-items: baseline;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
+            gap: 0.6rem;
+            padding: 0.4rem 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
@@ -273,7 +273,7 @@
         }
 
         .metric-value {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             line-height: 1;
         }
@@ -282,7 +282,7 @@
         .metric-value-sage { color: var(--primary-sage); }
 
         .metric-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -483,12 +483,13 @@
             </div>
         </section>
 
-        <!-- PAGE 3: GOALS (SUCCESS FRAMEWORK) -->
+        <!-- PAGE 3: GOALS & CORE VALUES -->
         <section class="slide-page">
             <div class="page-title">Goals that connect experience, commerce, and trust</div>
             <p class="page-subtitle">Each objective has a measurable signal for the MVP and its early operations.</p>
             
-            <div class="grid-3">
+            <!-- Success Framework Metric Cards -->
+            <div class="grid-3" style="margin-bottom: 1.25rem;">
                 <!-- 01 DONATION -->
                 <div class="goal-framework-card" style="background: var(--primary-terracotta-soft); border-color: rgba(187, 103, 101, 0.25);">
                     <div class="goal-badge goal-badge-terracotta">01 Donation</div>
@@ -498,8 +499,8 @@
                         <span class="metric-value metric-value-terracotta">≥15%</span>
                         <span class="metric-label">form conversion</span>
                     </div>
-                    <div class="metric-row" style="margin-top: 0.5rem;">
-                        <span class="metric-value metric-value-terracotta">≤48 hrs</span>
+                    <div class="metric-row">
+                        <span class="metric-value metric-value-terracotta" style="font-size: 1.25rem;">≤48 hrs</span>
                         <span class="metric-label">pickup / drop-off confirmation</span>
                     </div>
                 </div>
@@ -514,11 +515,11 @@
                         <span class="metric-label">sell-through rate</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-value metric-value-sage" style="font-size: 1.5rem;">IDR 50K</span>
+                        <span class="metric-value metric-value-sage" style="font-size: 1.25rem;">IDR 50K</span>
                         <span class="metric-label">average selling price</span>
                     </div>
                     <div class="metric-row">
-                        <span class="metric-value metric-value-sage">4× / year</span>
+                        <span class="metric-value metric-value-sage" style="font-size: 1.25rem;">4× / year</span>
                         <span class="metric-label">buyer repurchase</span>
                     </div>
                 </div>
@@ -529,8 +530,27 @@
                     <div class="goal-card-title">Make social impact visible</div>
                     
                     <div class="metric-row">
-                        <span class="metric-value metric-value-terracotta">≤3 days</span>
+                        <span class="metric-value metric-value-terracotta" style="font-size: 1.25rem;">≤3 days</span>
                         <span class="metric-label">publish proof after month-end</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The 3 Strategic Core Values -->
+            <div class="card" style="padding: 1.25rem 1.5rem; margin-bottom: 0;">
+                <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">🎯 Strategic Solution Core Values (The 3 Pillars)</h3>
+                <div class="grid-3">
+                    <div style="background: var(--primary-terracotta-soft); padding: 0.8rem 1rem; border-radius: 10px; border: 1px solid rgba(187, 103, 101, 0.2);">
+                        <h4 style="color: var(--primary-terracotta); font-size: 0.9rem; margin-bottom: 0.3rem;">1. Seamless Donation</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5;">Zero-friction doorstep pickup or HQ drop-off booking in Jakarta, removing sorting & packing hassle.</p>
+                    </div>
+                    <div style="background: var(--primary-sage-soft); padding: 0.8rem 1rem; border-radius: 10px; border: 1px solid rgba(126, 140, 105, 0.2);">
+                        <h4 style="color: var(--primary-sage); font-size: 0.9rem; margin-bottom: 0.3rem;">2. Verified Product</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5;">Sanitized, quality-graded, and accurately measured clothing to guarantee trust for buyers.</p>
+                    </div>
+                    <div style="background: var(--primary-terracotta-soft); padding: 0.8rem 1rem; border-radius: 10px; border: 1px solid rgba(187, 103, 101, 0.2);">
+                        <h4 style="color: var(--primary-terracotta); font-size: 0.9rem; margin-bottom: 0.3rem;">3. Social Impact Transparency</h4>
+                        <p style="font-size: 0.8rem; line-height: 1.5;">Full financial accountability through monthly public audit logs and verified disbursement receipts.</p>
                     </div>
                 </div>
             </div>
