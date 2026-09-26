@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprity — Case Study Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #faf8f5;
+            --card-bg: #ffffff;
+            --card-border: #e8e2d9;
+            --primary-terracotta: #bb6765;
+            --primary-terracotta-soft: #fbf0f0;
+            --primary-terracotta-glow: rgba(187, 103, 101, 0.18);
+            --primary-sage: #7e8c69;
+            --primary-sage-soft: #f2f5ef;
+            --primary-sage-glow: rgba(126, 140, 105, 0.18);
+            --text-main: #4a4e4d;
+            --text-bright: #2d3130;
+            --text-muted: #737877;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* Top Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary-terracotta);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.25rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-terracotta);
+            background: var(--primary-terracotta-soft);
+        }
+
+        /* Main Slider Container */
+        .slider-wrapper {
+            display: flex;
+            width: 700vw; /* 7 Pages */
+            height: 100vh;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            padding-top: 70px;
+        }
+
+        .slide-page {
+            width: 100vw;
+            height: calc(100vh - 70px);
+            padding: 2.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+
+        /* Layout Grid & Cards */
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-bright);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .page-title::before {
+            content: '';
+            width: 5px;
+            height: 2.2rem;
+            background: var(--primary-terracotta);
+            border-radius: 4px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -10px rgba(187, 103, 101, 0.08);
+            margin-bottom: 1.25rem;
+        }
+
+        .card h3 {
+            color: var(--text-bright);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Navigation Controls (Arrows) */
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--primary-terracotta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(187, 103, 101, 0.12);
+        }
+
+        .nav-arrow:hover {
+            background: var(--primary-terracotta);
+            color: #ffffff;
+            border-color: var(--primary-terracotta);
+            box-shadow: 0 0 15px var(--primary-terracotta-glow);
+        }
+
+        .arrow-left { left: 1.5rem; }
+        .arrow-right { right: 1.5rem; }
+
+        .arrow-disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Photo Mockup Gallery */
+        .photo-gallery {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.75rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .photo-gallery img {
+            height: 320px;
+            border-radius: 12px;
+            object-fit: contain;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: #ffffff;
+        }
+
+        /* Schedule Container */
+        .schedule-img-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            aspect-ratio: 1693 / 929;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 10px 25px -10px rgba(187, 103, 101, 0.08);
+            overflow: hidden;
+        }
+
+        .schedule-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Highlight Pills & Links */
+        .badge {
+            background: var(--primary-terracotta-soft);
+            color: var(--primary-terracotta);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(187, 103, 101, 0.2);
+        }
+
+        .badge-sage {
+            background: var(--primary-sage-soft);
+            color: var(--primary-sage);
+            border: 1px solid rgba(126, 140, 105, 0.2);
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--primary-terracotta);
+            color: #ffffff;
+            padding: 0.8rem 1.6rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-link:hover {
+            box-shadow: 0 0 20px var(--primary-terracotta-glow);
+            transform: translateY(-2px);
+            background: #a35654;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-pill {
+            background: var(--card-bg);
+            color: var(--text-bright);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(187, 103, 101, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .skill-pill::before {
+            content: "✦";
+            color: var(--primary-sage);
+            font-size: 0.8rem;
+        }
+
+        .doc-link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .doc-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-sage-soft);
+            color: var(--primary-sage);
+            border: 1px solid var(--card-border);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .doc-chip:hover {
+            background: var(--primary-sage);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .proto-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--primary-terracotta-soft);
+            color: var(--primary-terracotta);
+            border: 1px solid var(--card-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .proto-link-btn:hover {
+            background: var(--primary-terracotta);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="brand-logo">
+            <span>🌱 SPRITY</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a onclick="goToSlide(0)" class="nav-item active">Cover</a></li>
+            <li><a onclick="goToSlide(1)" class="nav-item">Problem</a></li>
+            <li><a onclick="goToSlide(2)" class="nav-item">Goals</a></li>
+            <li><a onclick="goToSlide(3)" class="nav-item">Schedule</a></li>
+            <li><a onclick="goToSlide(4)" class="nav-item">Prototypes</a></li>
+            <li><a onclick="goToSlide(5)" class="nav-item">Outcome</a></li>
+            <li><a onclick="goToSlide(6)" class="nav-item">Profile & Docs</a></li>
+        </ul>
+    </header>
+
+    <!-- Side Navigation Arrows -->
+    <button class="nav-arrow arrow-left arrow-disabled" id="btn-prev" onclick="prevSlide()">❮</button>
+    <button class="nav-arrow arrow-right" id="btn-next" onclick="nextSlide()">❯</button>
+
+    <!-- Slider Wrapper -->
+    <div class="slider-wrapper" id="slider">
+
+        <!-- PAGE 1: COVER -->
+        <section class="slide-page" style="justify-content: center;">
+            <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+                <div style="margin-bottom: 1rem;">
+                    <span class="badge badge-sage" style="font-size: 0.9rem; padding: 0.5rem 1.2rem;">Digital Opportunity Shop</span>
+                </div>
+
+                <h1 style="font-size: 3.2rem; color: var(--text-bright); margin: 1.2rem 0 1rem 0; font-weight: 800; line-height: 1.2;">
+                    Sprity: Declutter with Purpose, Shop as Opportunity
+                </h1>
+                <p style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 2rem;">
+                    Sprity is a digital opportunity shop, a platform that turns donated preloved goods into social impact. We collect unused clothing, sanitize and verify every piece, and resell it through a curated catalogue to transparently fund partner charities.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 2rem; color: var(--text-bright); font-weight: 600; margin-bottom: 2rem;">
+                    <div>📅 Duration: <span style="color: var(--primary-terracotta);">Sep 2026 – Dec 2026</span></div>
+                    <div>🎯 Role: <span style="color: var(--primary-sage);">Project Manager</span></div>
+                </div>
+
+                <!-- Project-Related Core Skills -->
+                <h4 style="color: var(--text-bright); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem;">Core Project Management Competencies</h4>
+                <div class="skills-grid">
+                    <span class="skill-pill">Agile Delivery & Sprint Management</span>
+                    <span class="skill-pill">BRD / FSD / PRD Documentation</span>
+                    <span class="skill-pill">End-to-End BPMN Process Modeling</span>
+                    <span class="skill-pill">Quantitative & Qualitative UX Research</span>
+                    <span class="skill-pill">Risk Management & Mitigation Log</span>
+                    <span class="skill-pill">Cross-Functional Stakeholder Alignment</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: PROBLEM -->
+        <section class="slide-page">
+            <div class="page-title">Problem & Current Situation</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>📦 Supply Friction (Donors)</h3>
+                    <p style="margin-bottom: 0.75rem;"><strong>The Hassle:</strong> Donors have overflowing wardrobes but lack time and energy to sort, clean, photograph, and list items.</p>
+                    <p style="margin-bottom: 0.75rem;"><strong>Logistical Bottleneck:</strong> 45% do not know where to donate and 45% find the manual handover process too demanding.</p>
+                    <p><strong>Impact:</strong> Wearable clothing sits idle in closets for months without social utility.</p>
+                </div>
+                <div class="card">
+                    <h3>🛒 Demand Hesitation (Thrift Buyers)</h3>
+                    <p style="margin-bottom: 0.75rem;"><strong>Quality Uncertainty:</strong> 75% of buyers prioritize cleanliness and condition above all else.</p>
+                    <p style="margin-bottom: 0.75rem;"><strong>Sizing & Hygiene Fears:</strong> 55% worry about unhygienic preloved goods or inaccurate sizing.</p>
+                    <p><strong>Trust Deficit:</strong> 65% require public receipts and verified audit logs to trust donation platforms.</p>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 0.5rem;">
+                <div style="border-left: 4px solid var(--primary-terracotta); padding-left: 1rem;">
+                    <h3>🔴 Problem Statement</h3>
+                    <p>Decluttering is stalled by high operational friction for donors, while potential buyers hesitate due to hygiene, sizing, and transparency concerns. Sprity bridges this gap with a fully managed pickup, verification, and add social value by providing transparent charity funding loop.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: GOALS -->
+        <section class="slide-page">
+            <div class="page-title">Project Objectives & Targets (OKRs)</div>
+            <div class="grid-3" style="margin-bottom: 1.5rem;">
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--primary-terracotta); font-size: 2.2rem; font-weight: 800;">172,600</h3>
+                    <p>Target Garments Collected in the first 2 Years </p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--primary-sage); font-size: 2.2rem; font-weight: 800;">84%</h3>
+                    <p>Target Sell-Through Rate (144,976 Garments Sold)</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--primary-terracotta); font-size: 2.2rem; font-weight: 800;">100%</h3>
+                    <p>Public Impact Audit Log Transparency</p>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🎯 Strategic Solution Goals</h3>
+                <ul style="padding-left: 1.2rem; line-height: 1.8;">
+                    <li><strong>Seamless Inbound:</strong> Provide doorstep pickup and HQ drop-off confirmed in ≤48 hours.</li>
+                    <li><strong>The Trust Stack:</strong> Ensure every item is sanitized, quality-graded, and precisely measured before listing.</li>
+                    <li><strong>Transparent Social Loop:</strong> Channel profits to verified partner charities with monthly public disbursement proofs published within 3 days after month-end.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PAGE 4: PROCESS - SCHEDULE ONLY -->
+        <section class="slide-page">
+            <div class="page-title">Process: Delivery Plan & Timeline</div>
+            <div class="schedule-img-container">
+                <img src="gantt-chart.png" alt="Sprity Gantt Chart" onerror="this.onerror=null; this.src='Screenshot 2026-08-18 174748.png';">
+            </div>
+        </section>
+
+        <!-- PAGE 5: PROCESS - UI PROTOTYPES -->
+        <section class="slide-page">
+            <div class="page-title">Process: UI Prototypes & User Journey</div>
+
+            <!-- Donation Flow (Top) -->
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <h3>🌱 Donor Flow: Seamless Doorstep Pickup & Handover</h3>
+                    <a href="https://drive.google.com/file/d/1JRqzt33uPITyDgAAwg1etQJ-bIiAvIwP/view?usp=sharing" target="_blank" class="proto-link-btn">
+                        🔗 View Research & MVP Prototype
+                    </a>
+                </div>
+                <div class="photo-gallery">
+                    <img src="p1.png" alt="Donor Step 1" onerror="this.style.display='none'">
+                    <img src="p2.png" alt="Donor Step 2" onerror="this.style.display='none'">
+                    <img src="p3.png" alt="Donor Step 3" onerror="this.style.display='none'">
+                    <img src="p4.png" alt="Donor Step 4" onerror="this.style.display='none'">
+                </div>
+            </div>
+
+            <!-- Buyer & Audit Flow (Bottom) -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <h3>🛒 Buyer & Audit Flow: Curated Thrift & Public Proof</h3>
+                    <a href="https://drive.google.com/file/d/1MDApR4myrU2boyR1BsOWCwqHDuPGSJRa/view?usp=drive_link" target="_blank" class="proto-link-btn">
+                        🔗 View Full Interactive PRD & Flow
+                    </a>
+                </div>
+                <div class="photo-gallery">
+                    <img src="p5.png" alt="Buyer Step 1" onerror="this.style.display='none'">
+                    <img src="p6.png" alt="Buyer Step 2" onerror="this.style.display='none'">
+                    <img src="p7.png" alt="Buyer Step 3" onerror="this.style.display='none'">
+                    <img src="p8.png" alt="Buyer Step 4" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 6: OUTCOME -->
+        <section class="slide-page">
+            <div class="page-title">Solution & Project Outcomes</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>💡 Implemented Managed Solutions</h3>
+                    <ul style="padding-left: 1.2rem; line-height: 1.8;">
+                        <li><strong>Dual Inbound Channels:</strong> Doorstep pickup in Jakarta or drop-off at HQ.</li>
+                        <li><strong>Quality & Hygiene Guarantee:</strong> Every garment is sanitized, QC-graded, and measured.</li>
+                        <li><strong>Standardized Pricing:</strong> Transparent tiers averaging IDR 50,000 per garment.</li>
+                        <li><strong>Public Audit Hub:</strong> Publicly accessible audit log containing transaction IDs and disbursement receipts.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>📈 Risk Management & MVP Mitigation</h3>
+                    <ul style="padding-left: 1.2rem; line-height: 1.8;">
+                        <li><strong>Image Hotlinking / CORS:</strong> Mitigated via standardized direct-rendering URLs.</li>
+                        <li><strong>API Endpoint Stability:</strong> Resolved using central URL variables and strict release checks.</li>
+                        <li><strong>Pickup Logistics Costs:</strong> Managed with a 10-garment minimum threshold and HQ drop-off incentives.</li>
+                        <li><strong>Garment Quality Assurance:</strong> Low-grade pieces routed directly to textile recycling partners.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 7: PROFILE & RELATED DOCUMENTS -->
+        <section class="slide-page">
+            <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+                <div class="card" style="padding: 2.5rem;">
+                    <h2 style="color: var(--text-bright); font-size: 2.2rem; margin-bottom: 0.3rem;">Nurul Nadjmie</h2>
+                    <p style="color: var(--primary-terracotta); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem;">Project Manager</p>
+                    
+                    <p style="line-height: 1.8; margin-bottom: 2rem; color: var(--text-main); font-size: 1.05rem;">
+                        Results-oriented Project Manager who thrives at the intersection of commercial strategy, complex technical architecture, and user-centric design. Experienced in leading cross-functional teams from discovery to deployment—driving operational efficiency, automated system integration, and measurable social impact.
+                    </p>
+
+                    <!-- Complete Sprity Project Documentation Links (Exact 8 Docs) -->
+                    <h4 style="color: var(--text-bright); margin-bottom: 0.75rem; text-align: left;">📁 Sprity Project Documentation (8 Docs):</h4>
+                    <div class="doc-link-grid" style="margin-bottom: 1.8rem;">
+                        <a href="https://drive.google.com/file/d/1N7tJsEYv85PcdwHTDhx79D18_mgDLcQZ/view?usp=sharing" target="_blank" class="doc-chip">💡 Business Understanding</a>
+                        <a href="https://drive.google.com/file/d/1JRqzt33uPITyDgAAwg1etQJ-bIiAvIwP/view?usp=sharing" target="_blank" class="doc-chip">🔍 Research & MVP</a>
+                        <a href="https://drive.google.com/file/d/1Yl531NByGUSSrYMDguN6d71ge82V8x4i/view?usp=sharing" target="_blank" class="doc-chip">📋 BRD Document</a>
+                        <a href="https://drive.google.com/file/d/1mNUqvyGS52vfPDVU_E9u96NnFymoxSIt/view?usp=sharing" target="_blank" class="doc-chip">⚙️ FSD Document</a>
+                        <a href="https://drive.google.com/file/d/1MDApR4myrU2boyR1BsOWCwqHDuPGSJRa/view?usp=drive_link" target="_blank" class="doc-chip">🧪 PRD & Flow</a>
+                        <a href="https://docs.google.com/spreadsheets/d/1VL3c6TqVgLGRD5LL5enOFtSaPbguXyL2/edit?usp=drive_link&ouid=112893336098146388111&rtpof=true&sd=true" target="_blank" class="doc-chip">📅 Gantt & WBS Sheet</a>
+                        <a href="https://docs.google.com/spreadsheets/d/1ba3GpXkagz225G9UEkn7eoLYM3bmG4dw/edit?usp=drive_link&ouid=112893336098146388111&rtpof=true&sd=true" target="_blank" class="doc-chip">⚠️ Risk Log Sheet</a>
+                        <a href="https://docs.google.com/spreadsheets/d/1qXzJK4ML58eY9KzwdGqC1OWcJOcDkkkV/edit?usp=drive_link&ouid=112893336098146388111&rtpof=true&sd=true" target="_blank" class="doc-chip">📌 Sprint & Milestone</a>
+                    </div>
+
+                    <a href="https://iyunnurul58-blip.github.io/Portfolio/" class="btn-link" target="_blank">
+                        🔗 Visit Main Portfolio Website
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Interactive Navigation Script -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 7;
+        const slider = document.getElementById('slider');
+        const navItems = document.querySelectorAll('.nav-item');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+
+        function updateSlide() {
+            slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            
+            // Update Active Menu
+            navItems.forEach((item, index) => {
+                if (index === currentSlide) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Update Arrow State
+            if (currentSlide === 0) {
+                btnPrev.classList.add('arrow-disabled');
+            } else {
+                btnPrev.classList.remove('arrow-disabled');
+            }
+
+            if (currentSlide === totalSlides - 1) {
+                btnNext.classList.add('arrow-disabled');
+            } else {
+                btnNext.classList.remove('arrow-disabled');
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard Arrow Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
